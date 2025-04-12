@@ -4,7 +4,11 @@ import { UpdatePersonagemDto } from './dto/update-personagem.dto';
 
 @Injectable()
 export class PersonagemService {
-  create(createPersonagemDto: CreatePersonagemDto) {
+  create(personagem: CreatePersonagemDto) {
+
+    const name = personagem.nome
+    console.log(name)
+
     return 'This action adds a new personagem';
   }
 

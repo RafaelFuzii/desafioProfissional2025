@@ -1,5 +1,5 @@
 import { IsString, IsNotEmpty, IsEnum, IsInt, Max } from "class-validator";
-import classes from "../enum/classes.enum";
+import { Classes } from "../enum/classes.enum";
 
 export class CreatePersonagemDto {
     @IsString()
@@ -11,8 +11,8 @@ export class CreatePersonagemDto {
     NomeAventureiro: string;
 
     @IsNotEmpty()
-    @IsEnum(classes)
-    classe: classes;
+    @IsEnum(Classes)
+    classe: Classes;
 
     @IsInt()
     level: number;

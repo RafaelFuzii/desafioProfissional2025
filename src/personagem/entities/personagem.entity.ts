@@ -1,5 +1,10 @@
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import mongoose from "mongoose";
+
+@Schema()
 export class Personagem {
-    id: string;
+
+    @Prop()
     nome: string;
     NomeAventureiro: string;
     classe: string;
@@ -8,3 +13,5 @@ export class Personagem {
     forca: number;
     defesa: number
 }
+
+export const personagemSchema = SchemaFactory.createForClass(Personagem)

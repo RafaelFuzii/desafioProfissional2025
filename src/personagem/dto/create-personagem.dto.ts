@@ -1,26 +1,36 @@
-import { IsString, IsNotEmpty, IsEnum, IsInt, Max } from "class-validator";
-import { Classes } from "../enum/classes.enum";
+import { IsString, IsNotEmpty, IsEnum, IsInt, Max, ValidateIf } from "class-validator";
+import { Classes } from "../../enum/classes.enum";
+import { ApiProperty } from "@nestjs/swagger";
 
 export class CreatePersonagemDto {
+    @ApiProperty()
     @IsString()
-    id: string;
-    nome: string;
+    nome: string
 
+    @ApiProperty()
     @IsString()
     @IsNotEmpty()
-    NomeAventureiro: string;
+    nomeAventureiro: string
 
+    @ApiProperty()
     @IsNotEmpty()
-    @IsEnum(Classes)
+    @IsEnum(Classes, { message: "Classe inválida. Use uma das seguintes classes: guerreiro, mago, arqueiro, ladino, bardo." })
     classe: Classes;
 
+    @ApiProperty()
     @IsInt()
-    level: number;
+    level: number
+    
+    @ApiProperty()
+    itemMagico: Array<string>;
 
-    listaItemMagico: Array<string>;
-
+    @ApiProperty()
     @IsInt()
     @Max(10)
-    forca: number;
+    forca: number
+
+    @ApiProperty()
+    @IsInt()
+    @Max(10)
     defesa: number
 }
